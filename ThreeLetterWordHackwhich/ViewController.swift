@@ -54,10 +54,14 @@ class ViewController: UIViewController
         if counter == 26
         {
             counter = resetCounter()
+            print(counter)
+            
+            currentLetter = letters[counter]
+            currentLetterLabel.text = currentLetter
             
             for label in self.wordLabels
             {
-                currentLetterLabel.text = "?"
+                label.text = "?"
             }
         }
     }

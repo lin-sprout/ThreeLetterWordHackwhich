@@ -34,11 +34,11 @@ class ViewController: UIViewController
     @IBAction func whenTapped(_ sender: Any)
     {
 
-        currentLetter = letters[counter]
-        currentLetterLabel.text = currentLetter
+        
     
 //can click on item(ex: ? boxes) and tag them, which assings them a # will be useful for next proj//
-        
+        currentLetter = letters[counter]
+        currentLetterLabel.text = currentLetter
         let selectedPoint = ((sender as! AnyObject).location(in:stackViewHorz))
         
         for label in wordLabels
@@ -49,7 +49,27 @@ class ViewController: UIViewController
                 label.text = "\(currentLetter)"
             }
         }
+        
     counter += 1
+        if counter == 26
+        {
+            counter = resetCounter()
+            
+            for label in self.wordLabels
+            {
+                currentLetterLabel.text = "?"
+            }
+        }
+    }
+    
+  func resetCounter() -> Int
+    {
+        let alert = UIAlertController(title: "Resetting Counter", message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+        return 0
     }
     
 }
